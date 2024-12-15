@@ -26,7 +26,6 @@ class DiskSchedulerApp(QWidget):
         self.result_display = QTextEdit(self)
         self.result_display.setReadOnly(True)
 
-        # 组织布局
         layout.addWidget(QLabel('初始磁头的位置:'))
         layout.addWidget(self.head_position_input)
         layout.addWidget(QLabel('访问序列（以逗号分隔）:'))
@@ -123,6 +122,7 @@ def scan(requests, head_position, direction):
         for i in range(0, len(requests)):
             if requests[i] >= head_position:
                 pos = i
+                break
         pos1 = pos
         while pos1 < len(requests):
             access_order.append(requests[pos1])
